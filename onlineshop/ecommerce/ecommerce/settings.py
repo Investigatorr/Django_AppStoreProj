@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'easy_thumbnails',
     'shop.apps.ShopConfig',  # 이게 shop보다 더 명확
     'django.contrib.admin',
     'django.contrib.auth',
@@ -79,10 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',# mysql 엔진 설정
         'NAME':'onlineshop', #데이터베이스 이름
-        'USER':'admin',# 데이터베이스 연결시 사용할 유저 이름
-        'PASSWORD':'',  # 유저 패스워드
-        'HOST':'localhost',
-        'PORT':'3306',
+        'USER':'root',# 데이터베이스 연결시 사용할 유저 이름
+        'PASSWORD':'root',  # 유저 패스워드
     }
 }
 
@@ -132,6 +131,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'products/')  #  /media/products/2019/01/04/maxresdefault.jpg 로 이미지 파일 위치가 지정됨
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')

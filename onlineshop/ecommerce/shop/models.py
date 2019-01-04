@@ -1,5 +1,8 @@
 from django.db import models
 from django.urls import reverse
+
+
+
 '''
 !!! 카테고리 !!!
 name : 카테고리명
@@ -31,7 +34,6 @@ class Category(models.Model):
 !!! 제품 !!!
 '''
 
-
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)  # 이 문장 related_name 의미는??
     name = models.CharField(max_length=100, db_index=True)
@@ -39,11 +41,9 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     price = models.PositiveIntegerField()
     available = models.BooleanField(default=True)
-    stock = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
-
+    image = models.ImageField(blank=True, upload_to='shop')
     # index => id랑 슬러그 특정해준다. 쿼리 날릴때 성능 UP!
     class Meta:
         ordering = ('name', )
@@ -66,10 +66,9 @@ class SpecialDiscounts(models.Model):
     price = models.PositiveIntegerField()
     originalPrice = models.DecimalField(max_digits=10, decimal_places=2)    # 기존 품목과는 다른 항목 반영!!!
     available = models.BooleanField(default=True)
-    stock = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    image = models.ImageField(blank=True, upload_to='shop')
 
     class Meta:
         ordering = ('name', )

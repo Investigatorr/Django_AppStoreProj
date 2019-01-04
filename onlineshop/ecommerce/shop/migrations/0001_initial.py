@@ -36,10 +36,9 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(blank=True)),
                 ('price', models.PositiveIntegerField()),
                 ('available', models.BooleanField(default=True)),
-                ('stock', models.PositiveIntegerField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('image', models.ImageField(blank=True, upload_to='products/%Y/%m/%d')),
+                ('image', models.ImageField(blank=True, upload_to='shop')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products', to='shop.Category')),
             ],
             options={
@@ -56,10 +55,9 @@ class Migration(migrations.Migration):
                 ('price', models.PositiveIntegerField()),
                 ('originalPrice', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('available', models.BooleanField(default=True)),
-                ('stock', models.PositiveIntegerField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('image', models.ImageField(blank=True, upload_to='products/%Y/%m/%d')),
+                ('image', models.ImageField(blank=True, upload_to='shop')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='Salse_products', to='shop.Category')),
             ],
             options={
