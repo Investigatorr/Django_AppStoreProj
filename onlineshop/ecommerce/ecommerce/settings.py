@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'easy_thumbnails',
     'shop.apps.ShopConfig',  # 이게 shop보다 더 명확
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,9 +65,13 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
@@ -113,10 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/2.0/topics/i18n/
-
 LANGUAGE_CODE = 'ko'    #en-us'
 
 TIME_ZONE = 'Asia/Seoul' #UTC'
@@ -131,7 +130,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-
+LOGIN_REDIRECT_URL = '/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 

@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from shop import views as shop_views
 
 urlpatterns = [   # shop app의 urls 포함한 url패턴
     path('admin/', admin.site.urls),    
     path('', include('shop.urls')),
+    path('accounts/',  include('django.contrib.auth.urls')),
+    path('accounts/signup/', shop_views.CreateUserView.as_view(), name='signup'),
+    path('accounts/login/done/', shop_views.RegisteredView.as_view(), name='create_user_done'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
