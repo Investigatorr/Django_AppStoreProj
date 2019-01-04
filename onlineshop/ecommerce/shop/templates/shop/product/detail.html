@@ -11,7 +11,6 @@
         <div class="col-sm-8 blog-main">
 
           <div class="blog-post">
-              <div class="row">
                 <div class="card">
                     <div class="card-body">
                         <div class="col-md-6 text-right">
@@ -20,18 +19,18 @@
                         <div class="col-md-6" style="padding-left: 20px">
                             <h3>{{ product.name }}</h3>
                             <h6><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h6>
-                            <p class="text-muted">Kshs. {{ product.price }}</p>
+                            <p class="text-muted">{% load humanize %}{{ product.price|intcomma }}원</p><!--가격 변환-->
+                                <form action="{% url "cart:cart_add" product.id %}" method="post">  <!--카트부분!!-->
+                                    {% csrf_token %}
+                                    {{ cart_product_form }}
+                                    <input type="submit" value="add to cart" class="btn btn-primary">
+                                </form>
                             <p>{{ product.description|safe|linebreaksbr }}</p>
+                            <p><a href="{{ product.category.get_absolute_url }}">back</a></p>
                         </div>
                     </div>
-                </div>
               </div>
-
-
           </div><!-- /.blog-post -->
-
-        </div><!-- /.blog-main -->
-      </div><!-- /.row -->
-
-    </div><!-- /.container -->
+    </div><!-- /.blog-main -->
+</div><!-- /.container -->
 {% endblock %}

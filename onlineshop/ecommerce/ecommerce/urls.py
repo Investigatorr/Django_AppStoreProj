@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [   # shop app의 urls 포함한 url패턴
-    path('admin/', admin.site.urls),    
-    path('', include('shop.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('admin/', admin.site.urls),     # 관리자 페이지 url정의한 파일과 연동
+    path('cart', include('cart.urls')),  # 카트 페이지 url정의한 파일과 연동 !!!! 꼭 shop보다 먼저와야 한다. 그래야 세션이 유지된 상태로 shop가능
+    path('', include('shop.urls')),      # shop페이지 url정의한 파일과 연동 / 아무 url입력 안했을 때 defaul값 => shop에서 url가져와 뿌림
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # settings.py 밑에 media 즉, 이미지 경로를 지정한 파일과 연동

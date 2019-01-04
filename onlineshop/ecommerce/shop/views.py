@@ -1,6 +1,7 @@
 # 웹에 띄울 상품 리스트와 개별 상품의 형태를 정의
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product, SpecialDiscounts
+from cart.forms import CartAddProductForm   # shop에 cart버튼을 추가하기 위한 임포트
 
 
 def product_list(request, category_slug=None):

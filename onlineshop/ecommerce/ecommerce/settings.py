@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'shop.apps.ShopConfig',  # 이게 shop보다 더 명확
+    'cart.apps.CartConfig',  # python manage.py startapp cart를 해서 cart폴더 생성한 뒤 적어야 함(예제 잘못돼 있다.)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [  
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware' # 장바구니 추가를 위한 세션 프레임워크 config 추가 => 현재 세션에서 쟝고를 통해 요청을 받아올 수 있    비동기화????
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -133,5 +135,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'products/')  #  /media/products/2019/01/04/maxresdefault.jpg 로 이미지 파일 위치가 지정됨
+
+CART_SESSION_ID = 'cart'  # 카트 세션을 위해 추가  => cart를 유저 세션의 key로 지정해 사용자마다 모든 세션에 대해 동일한 카드 세션을 사용할 수 있다.
+# python manage.py startapp cart를 해서 cart폴더 생성한 뒤 적어야 함(예제 잘못돼 있다.)

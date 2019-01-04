@@ -64,7 +64,7 @@ class SpecialDiscounts(models.Model):
     slug = models.SlugField(max_length=100, db_index=True)
     description = models.TextField(blank=True)
     price = models.PositiveIntegerField()
-    originalPrice = models.DecimalField(max_digits=10, decimal_places=2)    # 기존 품목과는 다른 항목 반영!!!
+    originalPrice = models.PositiveIntegerField()    # 기존 품목과는 다른 항목 반영!!!
     available = models.BooleanField(default=True)
     stock = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
