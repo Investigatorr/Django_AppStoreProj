@@ -7,10 +7,10 @@ from cart.forms import CartAddProductForm   # shop에 cart버튼을 추가하기
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
-    products = Product.objects.filter(available=True)  
+    products = Product.objects.filter(available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        products = Product.objects.filter(category=category)# SpecialDiscountItem = SpecialDiscounts.objects.filter((category=category)        
+        products = Product.objects.filter(category=category) # SpecialDiscountItem = SpecialDiscounts.objects.filter((category=category)        
 
     context = {
         'category': category,
@@ -22,7 +22,9 @@ def product_list(request, category_slug=None):
 
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    cart_product_form = CartAddProductForm()   # 요거 빠뜨렸었음
     context = {
-        'product': product
+        'product': product,
+        'cart_product_form': cart_product_form  # 요거 빠뜨렸었음
     }
     return render(request, 'shop/product/detail.html', context)
