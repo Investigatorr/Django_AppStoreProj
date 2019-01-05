@@ -5,18 +5,40 @@
 {% endblock %}
 
 {% block content %}
+<div class="menu">
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="sidebar-module">
+            <h4>Categories</h4>
+            <ol class="list-unstyled">
+            <li {% if not category %} class="active"{% endif %}><a href="{% url 'shop:product_list' %}">All</a></li>
+            {% for c in categories %}
+            <ul>
+            <li {% if category.slug == c.slug %} class="active"{% endif %}>
+                <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+            </li>
+            </ul>
+            {% endfor %}
+            </ol>
+        </div>
+        </div><!-- /.blog-sidebar -->
+    </div>
+  </div><!-- /.row -->
+
+</div><!-- /.container -->
    <div class="container-fluid">
       <div class="row" style="margin-top: 6%">
 
         <div class="col-sm-8 blog-main">
 
-          <div class="blog-post">
+          <div class="content">
               <div class="row">
                   {% for product in products %}
                       <div class="col-md-4">
                         <div class="thumbnail">
                             <a href="{{ product.get_absolute_url }}">
+                                    
                                 <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 130px; width: auto"> <!--media/products/2019/01/04/maxresdefault.jpg -->
+
                             </a>
                             <div class="caption">
                                 <h3 class="text-center">
@@ -35,22 +57,4 @@
 
         </div><!-- /.blog-main -->
 
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-          <div class="sidebar-module">
-            <h4>Categories</h4>
-            <ol class="list-unstyled">
-              <li {% if not category %} class="active"{% endif %}><a href="{% url 'shop:product_list' %}">All</a></li>
-            {% for c in categories %}
-
-              <li {% if category.slug == c.slug %} class="active"{% endif %}>
-                  <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-              </li>
-            {% endfor %}
-            </ol>
-          </div>
-        </div><!-- /.blog-sidebar -->
-
-      </div><!-- /.row -->
-
-    </div><!-- /.container -->
 {% endblock %}
