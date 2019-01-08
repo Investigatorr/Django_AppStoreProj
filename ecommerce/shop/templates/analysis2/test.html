@@ -1,0 +1,131 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }} {% else %} Products {% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+<div id="container"></div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+             ["Language", "Density", { role: 'style' }],
+             ["ART", 4.7, 'color: #ff1f1f'],
+             ["AUTOS", 4.4, 'color: #5f1f1f'],
+             ["BEAUTY",4.2, 'color: #1f9f1f'],
+             ["BOOKS", 3.8, 'color: #1f1f9f'],
+             ["BUSINESS", 4.8, 'color: #1f1f3f'],
+             ["COMICS", 4, 'color: #5f5f5f'],
+             ["COMMUNICATION", 4.5, 'color: #cd8500'],
+             ["DATING", 3.8, 'color: #d0bde5'],
+             ["EDUCATION", 4.7, 'color: #ffc0cb'],
+             ["ENTERTAINMENT", 4.6, 'color: #1fdf1f'],
+             ["EDUCATION", 3.8, 'color: #ff4b4b'],
+             ["EVENTS", 4.7, 'color: #0c6666'],
+             ["FAMILY", 3.8, 'color: #031919'],
+             ["FINANCE", 4.7, 'color: #1564b2'],
+             ["FOODS", 4.6, 'color: #64b215'],
+             ["GAME", 3.8, 'color: #b0ff62'],
+             ["HEALTH", 3.7, 'color: #7f0f47'],
+             ["HOUSE", 4.2, 'color: #551299'],
+             ["LIBRARIES", 4.8, 'color: #9352f9'],
+             ["MAPS", 3.9, 'color: #93b2a2'],
+             ["MEDICAL", 4.2, 'color: #1515b2'],
+             ["NEWS", 3.2, 'color: #991212'],
+             ["PARENTING", 4.5, 'color: #995512'],
+             ["PERSONALIZATION", 4.8, 'color: #ffff4b'],
+             ["PHOTOGRAPHY", 4.6, 'color: #991255'],
+             ["SHOPPING", 4.2, 'color: #e0b7b7'],
+             ["SOCIAL", 3.8, 'color: #559912'],
+             ["SPORTS", 3.7, 'color: #ad4141'],
+             ["TOOLS", 4.5, 'color: #b75988'],
+             ["TRAVELS", 4.2, 'color: #999912'],
+             ["VIDEO_PLAYERS", 4.3, 'color: #99c170'],
+             ["WEATHER", 4.2, 'color: #ffc78f']
+           ]);
+
+           var view = new google.visualization.DataView(data);
+
+
+           var options = {
+             title: 'chart1_Rating',
+             SliceText: 'label',
+             StartAngle: 100,
+             legend: { position: "none" },
+           };
+           var chart = new google.visualization.ColumnChart(document.getElementById("chart1"));
+           chart.draw(view, options);
+       }
+
+
+  </script>
+
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+             ["Language", "Density", { role: 'style' }],
+             ["ART", 10000, 'color: #ff1f1f'],
+             ["AUTOS", 50000, 'color: #5f1f1f'],
+             ["BEAUTY",100000, 'color: #1f9f1f'],
+             ["BOOKS", 100000, 'color: #1f1f9f'],
+             ["BUSINESS", 5000, 'color: #1f1f3f'],
+             ["COMICS", 10000, 'color: #5f5f5f'],
+             ["COMMUNICATION", 50000, 'color: #cd8500'],
+             ["DATING", 60000, 'color: #d0bde5'],
+             ["EDUCATION", 5000, 'color: #ffc0cb'],
+             ["ENTERTAINMENT", 50000, 'color: #1fdf1f'],
+             ["EDUCATION", 10000, 'color: #ff4b4b'],
+             ["EVENTS", 1000, 'color: #0c6666'],
+             ["FAMILY", 1000, 'color: #031919'],
+             ["FINANCE", 5000, 'color: #1564b2'],
+             ["FOODS", 50000, 'color: #64b215'],
+             ["GAME", 100000, 'color: #b0ff62'],
+             ["HEALTH", 1000, 'color: #7f0f47'],
+             ["HOUSE", 50000, 'color: #551299'],
+             ["LIBRARIES", 10000, 'color: #9352f9'],
+             ["MAPS", 5000, 'color: #93b2a2'],
+             ["MEDICAL", 10000, 'color: #1515b2'],
+             ["NEWS", 5000, 'color: #991212'],
+             ["PARENTING", 1000, 'color: #995512'],
+             ["PERSONALIZATION", 5000, 'color: #ffff4b'],
+             ["PHOTOGRAPHY", 5000, 'color: #991255'],
+             ["SHOPPING", 10000, 'color: #e0b7b7'],
+             ["SOCIAL", 5000, 'color: #559912'],
+             ["SPORTS", 100000, 'color: #ad4141'],
+             ["TOOLS", 50000, 'color: #b75988'],
+             ["TRAVELS", 10000, 'color: #999912'],
+             ["VIDEO_PLAYERS", 100, 'color: #99c170'],
+             ["WEATHER", 500, 'color: #ffc78f']
+           ]);
+
+           var view = new google.visualization.DataView(data);
+
+
+           var options = {
+             title: 'chart2_Installs',
+             SliceText: 'label',
+             StartAngle: 100,
+             legend: { position: "none" },
+           };
+           var chart = new google.visualization.ColumnChart(document.getElementById("chart2"));
+           chart.draw(view, options);
+       }
+
+
+  </script>
+
+ </head>
+ <body>
+   <div class="" id="chart1" style="height: 600px;"></div>
+   <div class="" id="chart2" style="height: 600px;"></div>
+
+ </body>
+ {% endblock %}

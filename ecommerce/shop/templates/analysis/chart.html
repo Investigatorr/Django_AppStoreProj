@@ -1,0 +1,36 @@
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+ 
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['bar']});
+
+
+
+      google.charts.setOnLoadCallback(drawChart);
+
+        
+        
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Pay of Free', 'Family', 'Game', 'Tools'],
+          ['Paid', 350, 400, 200],
+          ['Free', 1820, 800, 600],
+
+        ]); 
+        
+    
+        var options = {
+          chart: {
+            title: '과금여부에 따른 상위 카테고리 App갯수분포',
+            subtitle: '가족, 게임, 도구 카테고리 App',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('viewChart'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+    <div id="viewChart" style="width: 800px; height: 500px;"></div>

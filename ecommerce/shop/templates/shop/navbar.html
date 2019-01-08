@@ -1,0 +1,30 @@
+{% load static %}
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0px; background-color: rgb(250, 199, 90);">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="container-fluid">
+      <div class="navbar-header">
+        
+        <a class="navbar-brand" href="{% url 'shop:product_list' %}" style="color:#ffffff; font-weight:bold">
+          <img src="{% static 'img/playstore.png' %}" width="70cm" height="70cm" />DooDle Play Store
+        </a>
+        
+      </div>
+      <!-- Brand and toggle get grouped for better mobile display -->
+        
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="navbar-brand" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            {% if user.is_active %}
+            <li><a href="{%url 'login' %}" style="color:#ffffff;font-weight:bold"> <span class="glyphicon glyphicon-heart"></span> {{user.username}}</a></li>
+            <li><a href="{% url 'logout' %}" style="color:#ffffff;font-weight:bold">Logout</a></li>
+            {% else %}
+            <li><a href="{%url 'login' %}" style="color:#ffffff;font-weight:bold"> <span class="glyphicon glyphicon-user"></span> Login</a></li>
+            {% endif %}
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+  </div>
+
+</nav>

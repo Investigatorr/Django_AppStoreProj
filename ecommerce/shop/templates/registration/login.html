@@ -1,0 +1,34 @@
+{% extends 'shop/base.html' %}
+  {% block content %}
+
+  <!-- 로그인 되어있는 경우 -->
+  {% if user.is_active %}
+  <div  class="login">
+    <h2> {{user.username}}님, 환영합니다. </h2>
+    <a href="{% url 'logout' %}">로그아웃</a>
+  </div>
+
+  <!-- 로그인 되어있지 않은 경우 -->
+  
+    {% else %}
+    {% if form.errors %}
+      <!-- 에러발생시 -->
+    <div class="error"><p>ID나 비밀번호가 일치하지 않습니다.</p></div>
+    {% endif %}
+
+
+
+    <!-- 로그인 폼 -->
+  <div  class="login">
+    <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value=""/>
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary btn-sm">로그인</button>
+    <br><br>
+    <p  style="font-weight:bold">아이디가 없으신가요? &nbsp; <a href="{% url 'signup'%}">회원가입</a></p>
+    </form>
+  </div>
+
+  {% endif %}
+  {% endblock %}
